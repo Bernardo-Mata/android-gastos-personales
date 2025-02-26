@@ -3,7 +3,6 @@ package com.example.app_gastos_personales.database
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-
 @Dao
 interface TransaccionDao {
     @Insert
