@@ -3,11 +3,16 @@ package com.example.app_gastos_personales.database
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.OnConflictStrategy
+import com.example.app_gastos_personales.model.Transaccion
+import kotlinx.coroutines.flow.Flow
+
 @Dao
 interface TransaccionDao {
-    @Insert
-    suspend fun insertar(transaccion: TransaccionEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(transaccion: TransaccionEntity)
+
 
     @Query("SELECT * FROM transacciones")
-    suspend fun obtenerTodas(): List<TransaccionEntity>
+    fun getAllItems(): Flow<List<Transaccion>>
 }

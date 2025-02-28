@@ -1,12 +1,11 @@
 package com.example.app_gastos_personales.model
 
 import java.util.Date
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+@Entity(tableName = "transacciones")
 data class Transaccion(
-
-    val id: Int,
-    val monto: Double,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val descripcion: String,
-    val fecha: String,
-    val categoria: String
+    val monto: Double
 )
