@@ -15,8 +15,17 @@ interface TransaccionDao {
 
 
     @Query("SELECT * FROM transacciones")
-    fun getAllItems(): Flow<List<Transaccion>>
+    fun getAllTransacciones(): Flow<List<Transaccion>>
 
     @Update
     suspend fun update(transaccion: Transaccion)
+
+    @Query("SELECT * FROM transacciones WHERE id = :id")
+    suspend fun getTransaccionById(id: Int): Transaccion?
+
+    @Query("DELETE FROM transacciones WHERE id = :id")
+    suspend fun deleteTransaccionById(id: Int)
+
+
+
 }
